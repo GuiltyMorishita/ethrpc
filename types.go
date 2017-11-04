@@ -132,12 +132,14 @@ type TransactionReceipt struct {
 	TransactionIndex  int
 	BlockHash         string
 	BlockNumber       int
+	From              string
+	To                string
 	CumulativeGasUsed int
 	GasUsed           int
 	ContractAddress   string
 	Logs              []Log
 	LogsBloom         string
-	Root              string
+	Status            int
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
@@ -212,12 +214,14 @@ type proxyTransactionReceipt struct {
 	TransactionIndex  hexInt `json:"transactionIndex"`
 	BlockHash         string `json:"blockHash"`
 	BlockNumber       hexInt `json:"blockNumber"`
+	From              string `json:"from"`
+	To                string `json:"to"`
 	CumulativeGasUsed hexInt `json:"cumulativeGasUsed"`
 	GasUsed           hexInt `json:"gasUsed"`
 	ContractAddress   string `json:"contractAddress,omitempty"`
 	Logs              []Log  `json:"logs"`
 	LogsBloom         string `json:"logsBloom"`
-	Root              string `json:"root"`
+	Status            hexInt `json:"status"`
 }
 
 type hexInt int

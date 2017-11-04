@@ -827,6 +827,8 @@ func (s *EthRPCTestSuite) TestEthGetTransactionReceipt() {
 	result := `{
         "blockHash": "0x11537af16aec572bb72d6d52e2c801dbfc10f42ab6ea849fd8e31b57d7099eea",
         "blockNumber": "0x3919d3",
+        "from": "0x958c3ffa4af0b0ef6dc5204905ba4cdc1401ea64",
+        "to": "0xaf4dce16da2877f8c9e00544c93b62ac40631f16",
         "contractAddress": null,
         "cumulativeGasUsed": "0x1677f1",
         "gasUsed": "0x10148",
@@ -842,9 +844,9 @@ func (s *EthRPCTestSuite) TestEthGetTransactionReceipt() {
             "removed": false
         }],
         "logsBloom": "0x001",
-        "root": "0x55b68780caee96e686eb398371bb679574d4b995614ae94243da4886059a47ee",
         "transactionHash": "0x9c17afa5336d3cfd47e2e795520959b92e627e123e538fd4d5d7ece9025a8dce",
-        "transactionIndex": "0x13"  
+        "transactionIndex": "0x13",
+        "status": "0x1"
 	}`
 	s.registerResponse(result, func(body []byte) {
 		s.methodEqual(body, "eth_getTransactionReceipt")
@@ -858,11 +860,12 @@ func (s *EthRPCTestSuite) TestEthGetTransactionReceipt() {
 	s.Require().Equal(19, receipt.TransactionIndex)
 	s.Require().Equal("0x11537af16aec572bb72d6d52e2c801dbfc10f42ab6ea849fd8e31b57d7099eea", receipt.BlockHash)
 	s.Require().Equal(3742163, receipt.BlockNumber)
+	s.Require().Equal("0x958c3ffa4af0b0ef6dc5204905ba4cdc1401ea64", receipt.From)
+	s.Require().Equal("0xaf4dce16da2877f8c9e00544c93b62ac40631f16", receipt.To)
 	s.Require().Equal(1472497, receipt.CumulativeGasUsed)
 	s.Require().Equal(65864, receipt.GasUsed)
 	s.Require().Equal("", receipt.ContractAddress)
 	s.Require().Equal("0x001", receipt.LogsBloom)
-	s.Require().Equal("0x55b68780caee96e686eb398371bb679574d4b995614ae94243da4886059a47ee", receipt.Root)
 	s.Require().Equal(1, len(receipt.Logs))
 	s.Require().Equal(Log{
 		Removed:          false,
