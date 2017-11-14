@@ -396,7 +396,7 @@ func (s *EthRPCTestSuite) TestEthGetTransactionCount() {
 
 	count, err = s.rpc.EthGetTransactionCount(address, "latest")
 	s.Require().Nil(err)
-	s.Require().Equal(16, count)
+	s.Require().Equal(uint64(16), count)
 }
 
 func (s *EthRPCTestSuite) TestEthGetBlockTransactionCountByHash() {
