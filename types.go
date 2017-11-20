@@ -79,6 +79,9 @@ type Transaction struct {
 	Gas              int
 	GasPrice         big.Int
 	Input            string
+	V                string
+	R                string
+	S                string
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
@@ -197,6 +200,9 @@ type proxyTransaction struct {
 	Gas              hexInt  `json:"gas"`
 	GasPrice         hexBig  `json:"gasPrice"`
 	Input            string  `json:"input"`
+	V                string  `json:"v"`
+	R                string  `json:"r"`
+	S                string  `json:"s"`
 }
 
 type proxyLog struct {
