@@ -172,6 +172,8 @@ type Block struct {
 	GasLimit         int
 	GasUsed          int
 	Timestamp        int
+	MixHash          string
+	ReceiptsRoot     string
 	Uncles           []string
 	Transactions     []Transaction
 }
@@ -259,6 +261,8 @@ type proxyBlockWithTransactions struct {
 	GasLimit         hexInt             `json:"gasLimit"`
 	GasUsed          hexInt             `json:"gasUsed"`
 	Timestamp        hexInt             `json:"timestamp"`
+	MixHash          string             `json:"mixHash"`
+	ReceiptsRoot     string             `json:"receiptsRoot"`
 	Uncles           []string           `json:"uncles"`
 	Transactions     []proxyTransaction `json:"transactions"`
 }
@@ -288,6 +292,8 @@ type proxyBlockWithoutTransactions struct {
 	GasLimit         hexInt   `json:"gasLimit"`
 	GasUsed          hexInt   `json:"gasUsed"`
 	Timestamp        hexInt   `json:"timestamp"`
+	MixHash          string   `json:"mixHash"`
+	ReceiptsRoot     string   `json:"receiptsRoot"`
 	Uncles           []string `json:"uncles"`
 	Transactions     []string `json:"transactions"`
 }
@@ -309,6 +315,8 @@ func (proxy *proxyBlockWithoutTransactions) toBlock() Block {
 		Size:             int(proxy.Size),
 		GasLimit:         int(proxy.GasLimit),
 		GasUsed:          int(proxy.GasUsed),
+		MixHash:          proxy.MixHash,
+		ReceiptsRoot:     proxy.ReceiptsRoot,
 		Timestamp:        int(proxy.Timestamp),
 		Uncles:           proxy.Uncles,
 	}

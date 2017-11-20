@@ -582,6 +582,8 @@ func (s *EthRPCTestSuite) TestGetBlock() {
         "stateRoot": "0xab9287d3b8864338892d1d572198933979e39bfcfbde569ea52be15a9691b4c1",
         "timestamp": "0x59a556bd",
         "totalDifficulty": "0x2b5f79e86aaf701c81",
+				"mixHash": "0x39b1a7c9d2a7439406d29fe18c7f416d05314818ca629071365780cd8249a6e9",
+				"receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
         "transactions": [
 			{
 				"blockHash": "0x2bdda43f649c564642101fc990f569dd855e60f88bf83e931f509a92c62700f9",
@@ -637,6 +639,8 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 	s.Require().Equal(6715648, block.GasLimit)
 	s.Require().Equal(6528928, block.GasUsed)
 	s.Require().Equal(1504007869, block.Timestamp)
+	s.Require().Equal("0x39b1a7c9d2a7439406d29fe18c7f416d05314818ca629071365780cd8249a6e9", block.MixHash)
+	s.Require().Equal("0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421", block.ReceiptsRoot)
 	s.Require().Equal([]string{"0xf14cdb8a75de31dcf3da7a3a52c1fffcbaa3d56de9f50f86767fa411c10f4397"}, block.Uncles)
 	s.Require().Equal(2, len(block.Transactions))
 
@@ -688,6 +692,8 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 		"stateRoot": "0xbe7e86ee05a5d49ba64b3d9f3f0129bab90308032e42307a1a2ef5c8971c5f5c",
 		"timestamp": "0x59b62713",
 		"totalDifficulty": "0x30e3d47fb9d7a43f7c",
+		"mixHash": "0x39b1a7c9d2a7439406d29fe18c7f416d05314818ca629071365780cd8249a6e9",
+		"receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
 		"transactions": [
 			"0x160e19780a24f3d78492c7ac7228e0220d4b96878fec19daf182e1d8c4b3d94e"
 		],
@@ -719,6 +725,8 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 	s.Require().Equal(6709099, block.GasLimit)
 	s.Require().Equal(120603, block.GasUsed)
 	s.Require().Equal(1505109779, block.Timestamp)
+	s.Require().Equal("0x39b1a7c9d2a7439406d29fe18c7f416d05314818ca629071365780cd8249a6e9", block.MixHash)
+	s.Require().Equal("0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421", block.ReceiptsRoot)
 	s.Require().Equal([]string{}, block.Uncles)
 	s.Require().Equal(1, len(block.Transactions))
 	s.Require().Equal(Transaction{
